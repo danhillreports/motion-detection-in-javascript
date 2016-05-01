@@ -44,7 +44,7 @@
         fill: "white",
         "text-anchor": "middle",
         "font-family": "helvetica, arial"
-      }).text("Team");
+      }).text("Sprotz");
       [0, 1].forEach(function(i) {
         AV.svg.append("rect").attr({
           x: (AV.w / 3) + (i * 50),
