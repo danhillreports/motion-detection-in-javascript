@@ -6,13 +6,13 @@
  * @author         Benjamin Horn
  * @package        MotionDetector
  * @version        -
- * 
+ *
  */
 
 ;(function(App) {
 
 	"use strict";
-	
+
 	/*
 	 * The core motion detector. Does all the work.
 	 *
@@ -20,6 +20,8 @@
 	 *
 	 */
 	App.Core = function() {
+
+		var scale = d3.scale.linear().domain([0,48]).range([0,180]);
 
 		var rendering = false;
 
@@ -32,13 +34,13 @@
 		var currentImage = null;
 		var oldImage = null;
 
-		var topLeft = [Infinity,Infinity];
+		var topLeft = [0,0];
 		var bottomRight = [0,0];
 
 		var raf = (function(){
 			return  window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame ||
 			function( callback ){
-				window.setTimeout(callback, 1000/60);
+				window.setTimeout(callback, 1e5);
 			};
 		})();
 
@@ -72,23 +74,11 @@
 				return;
 			}
 
-			var vals = imageCompare.compare(currentImage, oldImage, width, height);
+			var topLeft = imageCompare.compare(currentImage, oldImage, width, height);
 
-			topLeft[0] = vals.topLeft[0] * 10;
-			topLeft[1] = vals.topLeft[1] * 10;
-
-			bottomRight[0] = vals.bottomRight[0] * 10;
-			bottomRight[1] = vals.bottomRight[1] * 10;
-
-			document.getElementById('movement').style.top = topLeft[1] + 'px';
-			document.getElementById('movement').style.left = topLeft[0] + 'px';
-
-			document.getElementById('movement').style.width = (bottomRight[0] - topLeft[0]) + 'px';
-			document.getElementById('movement').style.height = (bottomRight[1] - topLeft[1]) + 'px';
-
-			topLeft = [Infinity,Infinity];
-			bottomRight = [0,0]
-
+			if (topLeft !== 200) {
+				AV.wave(scale(topLeft));
+			}
 		}
 
 		/*

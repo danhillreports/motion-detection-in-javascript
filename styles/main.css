@@ -1,26 +1,14 @@
+* {
+  font-family: helvetica, arial, sans-serif; }
+
+#main {
+  height: 340px;
+  width: 240px;
+  display: inline-block; }
+
 #webCamWindow {
-	border: 1px solid #000;
-	width: 640px;
-	height:  480px;
-	position: absolute;
-	top: 0;
-	opacity: 1;
-	left: 0;	
-}
+  display: inline-block; }
 
-#canvas {
-	position: absolute;
-	opacity: 1;
-	top: 0;
-	left: 0;
-	width: 640px;
-	height:  480px;
-}
-
-#movement {
-	position: absolute;
-	top: 0;
-	left: 0;
-	border: 1px solid red;
-	background: rgba(255,0,0,0.3);
-}
+line.bones {
+  stroke: #1b0f5e;
+  stroke-width: 15; }

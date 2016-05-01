@@ -1,17 +1,26 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Webcam motion detection</title>
-		<link rel="stylesheet" type="text/css" href="styles/main.css" media="all">
-	</head>
-	<body>
-		<video id="webCamWindow" autoplay></video>
-		<div id="movement"></div>
-		
-		<script type="text/javascript" src="js/global.js"></script>
-		<script type="text/javascript" src="js/MotionDetector/WebCamCapture.js"></script>
-		<script type="text/javascript" src="js/MotionDetector/ImageCompare.js"></script>
-		<script type="text/javascript" src="js/MotionDetector/Core.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
-	</body>
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <title>WebCamSprotzFan</title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+</head>
+<body>
+  <div id="main" style="background-image:url(img/aaa.png);"></div>
+  <video id="webCamWindow" autoplay></video>
+  <div>
+    <button id="wave-btn" onclick="AV.defaultWave();">Wave!</button>
+  </div>
+
+  <script type="text/javascript" src="js/lib/d3.min.js"></script>
+  <script type="text/javascript" src="js/lib/lodash.js"></script>
+
+  <script type="text/javascript" src="js/global.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/MotionDetector/WebCamCapture.js"></script>
+  <script type="text/javascript" src="js/MotionDetector/ImageCompare.js"></script>
+  <script type="text/javascript" src="js/MotionDetector/Core.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+
+</body>
 </html>

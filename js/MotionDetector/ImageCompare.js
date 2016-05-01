@@ -6,13 +6,13 @@
  * @author         Benjamin Horn
  * @package        MotionDetector
  * @version        -
- * 
+ *
  */
 
 ;(function(App) {
 
 	"use strict";
-	
+
 	/*
 	 * Compares to images and shows the difference starting
 	 * from the top left to the bottom right.
@@ -31,7 +31,7 @@
 		 *
 		 */
 		function initialize() {
-			sensitivity = 40;
+			sensitivity = 80;
 
 			if(!temp1Canvas) {
 				temp1Canvas = document.createElement('canvas');
@@ -43,8 +43,7 @@
 				temp2Context = temp2Canvas.getContext("2d");
 			}
 
-			topLeft = [Infinity,Infinity];
-			bottomRight = [0,0];
+			topLeft = 200;
 		}
 
 		/*
@@ -82,15 +81,11 @@
 
 					if(comparePixel(pixel1Data, pixel2Data) == false) {
 						setTopLeft(x,y);
-						setBottomRight(x,y);
-					}					
+					}
 				}
 			}
 
-			return {
-				'topLeft': topLeft,
-				'bottomRight': bottomRight
-			}
+			return topLeft;
 		}
 
 		/*
@@ -129,11 +124,8 @@
 		 *
 		 */
 		function setTopLeft(x,y) {
-			if(x < topLeft[0] ) {
-				topLeft[0] = x;
-			}
-			if(y < topLeft[1]) {
-				topLeft[1] = [y];
+			if(y < topLeft) {
+				topLeft = y;
 			}
 		}
 
